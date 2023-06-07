@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: url(../images/background.jpg) no-repeat center center fixed;
+    background-size: cover;
+   
+}
+
+.nav-link {
+    margin-left: 15px;
+    margin-right: 15px;
+    color: white;
+}
+
+.username {
+   margin-right: 30px;
+}
+.nav-link:hover{
+    color: #F5F5F5;
+    text-decoration: none;
+    background-color: red;
+}
+
+.nav-item {
+    border-radius: 999px;
+    transition: all 0.5s ease-out;
+}
+
+.dropdown-item{
+    color:#212529;
+    background-color: white;
+}
+
+
+.footer {
+    width: 100%;
+    background-color:#212529;
+    color: white;
+    font-size: 15px;
+}
+
+.login {
+    width: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+}
+
+.home{
+   margin-top: 10%;
+}
+
+.home img {
+    width: 100%;
+    margin-top: -10%;
+}
+
+.tentang {
+    margin-top: 5%;
+}
+
+
+.info .card {
+    background-color: #e9e9e9;
+    box-shadow: 9px 10px 25px 0px rgba(0,0,0,0.39);
+    border-radius: 20px;
+    
+}
+
+.info .card:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease-out;
+}
+
+/* .tentang img {
+    width: 65%;
+    margin-top: -35%;
+    margin-left: -18%;
+} */
+
+.tentang .card {
+    background-color: #e9e9e9;
+    box-shadow: 9px 10px 25px 0px rgba(0,0,0,0.39);
+    border-radius: 20px;
+    
+}
+
+.tentang .card:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease-out;
+}
+
+iframe:hover {
+    transform: scale(1.1);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
