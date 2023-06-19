@@ -47,8 +47,22 @@ class DiagnosaModel extends Model
     return $this->db->table('diagnosa')->join('penyakit','penyakit.kode_penyakit = diagnosa.kode_penyakit')->join('solusi', 'solusi.kode_penyakit = penyakit.kode_penyakit')->where('id_user', $userId)->get()->getResultArray();
    }
 
+   public function getPenyakit()
+   {
+      return $this->db->table('basis_pengetahuan')->select('kode_penyakit')->groupBy('kode_penyakit')->get()->getResultObject();
+   }
+
+   public function getBasisPengetahuanByGejala($kode)
+   {
+      return $this->db->table('basis_pengetahuan')->where('kode_gejala', $kode)->get()->getResultObject();
+   }
+
    public function getBasisPengetahuan()
    {
-      return $this->db->table('basis_pengetahuan')->get()->getResultArray();
+      return $this->db->table('basis_pengetahuan')->get()->getResultObject();
+   }
+
+   function getDistinctBasisPengetahuan($kode) {
+      return $this->db->query("SELECT DISTINCT cf_pakar from basis_pengetahuan WHERE kode_gejala = '$kode'")->getResultArray();
    }
 }

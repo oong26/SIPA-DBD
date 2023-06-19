@@ -35,4 +35,9 @@ class SolusiModel extends Model
    {
       return $this->table('solusi')->join('penyakit', 'penyakit.kode_penyakit = solusi.kode_penyakit', 'inner')->where(['kode_solusi' => $id])->first();
    }
+
+   public function getSolusiByKode($kode)
+   {
+      return $this->select('detail_solusi')->where('kode_penyakit', $kode)->first();
+   }
 }

@@ -54,7 +54,6 @@ class LandingController extends BaseController
       $data = [
          'autocode' => $this->DiagnosaModel->autoCodeDiagnosa(),
          'datapenyakit' => $this->PenyakitModel->datapenyakit(),
-
       ];
       return view('/client-side/diagnosa2', $data);
    }

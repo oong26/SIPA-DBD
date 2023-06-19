@@ -25,11 +25,7 @@
                 <?php
                 $conn = mysqli_connect('localhost', 'root', '', 'sistem_pakar');
                 
-                $numbtable = 1;
-                $getKode = $_GET['kode_gejala'];
-                $getGejala = $_GET['nama_gejala'];
-                $getKeyakinan = $_GET['nilai_keyakinan'];
-                $nilaiUser = array();
+                
                 // var_dump(count($getKode) <= 1);die;
                 if(count($getKode) <= 1) {
                   header("Refresh:0; url=/diagnosa");
@@ -43,198 +39,10 @@
                     <td><?= $getKeyakinan[$i] ?></td>
                   </tr>
 
-                  <?php
-                  $query = mysqli_query($conn, "SELECT DISTINCT cf_pakar from basis_pengetahuan WHERE kode_gejala = '$getKode[$i]'");
-                  while ($query2 = mysqli_fetch_array($query)) {
-                    array_push($nilaiUser, $query2['cf_pakar']);
-                  }
-
-
-                  ?>
-
                 <?php
-                }
-                
-
-                function cf(array $nilaiPakar, array $nilaiUser, array $gejala)
-                {                    
-                    // $conn = mysqli_connect('localhost', 'root', '', 'sistem_pakar');
-                
-                    // $hasilDiagnosa = '';
-                    // $persentaseHasil = '';
-
-                    // $qpenyakit = mysqli_query($conn,"SELECT kode_penyakit FROM penyakit ORDER BY kode_penyakit ASC;");
-                    // $dataPenyakit = mysqli_fetch_object($qpenyakit);
-                    // // while(mysqli_fetch_object($qpenyakit)) {
-                        
-                    // }
-                    
-
-                    // $qgejala = mysqli_query($conn,"SELECT kode_gejala FROM gejala ORDER BY kode_gejala ASC;");
-                    // $dataGejala = mysqli_fetch_array($qgejala);
-                    // var_dump($dataGejala);
-                    // $panjangGejala = count($gejala);
-                    // $arrs = [];
-                    // try {
-                    //     // foreach ($dataPenyakit as $key => $value) {
-                    //     //     array_push($arrs, $value);
-                    //     // }
-                    //     for ($i=0; $i < $panjangGejala; $i++) { 
-                    //         $q = mysqli_query($conn, "SELECT * FROM basis_pengetahuan WHERE kode_gejala = '$gejala[$i]'");
-                    //         $selectedGejala = mysqli_fetch_assoc($q);
-                    //         $arrSelectedGejala = [];
-                    //         foreach ($dataPenyakit as $key => $kodePenyakit) {
-                    //             if ($kodePenyakit == $selectedGejala['kode_penyakit']) {
-                    //                 // array_push($arrSelectedGejala, $selectedGejala);
-                    //                 $value->gejala = $selectedGejala['kode_gejala'];
-                    //             }
-                    //         }
-                    //     }
-                    // } catch (\Throwable $th) {
-                    //     echo $th;
-                    // }
-                    // print_r($arrs);
-                    // var_dump($dataPenyakit);
-                    
-                    // $arrbasis=[];
-                    // $basis_pengetahuan = mysqli_query($conn,"SELECT kode_penyakit FROM penyakit ORDER BY kode_penyakit ASC;");
-                    // while ($query2 = mysqli_fetch_array($basis_pengetahuan)) {
-                    //     array_push($arrbasis, $query2['kode_penyakit']);
-                    // }
-
-                    // print_r($gejala);
-
-                //   $nilaiUserD01 = array();
-                //   $nilaiUserD02 = array();
-                //   $nilaiUserD03 = array();
-
-                //   $gejalaD01 = array();
-                //   $gejalaD02 = array();
-                //   $gejalaD03 = array();
-
-                //   $nilaiPakarD01 = array();
-                //   $nilaiPakarD02 = array();
-                //   $nilaiPakarD03 = array();
-
-                //   $nilaiCFD01 = array();
-                //   $nilaiCFD02 = array();
-                //   $nilaiCFD03 = array();
-
-                //   $hasilD01 = 0;
-                //   $hasilD02 = 0;
-                //   $hasilD03 = 0;
-                // $panjangGejala = count($gejala);
-                // for ($i = 0; $i < $panjangGejala; $i++) {
-                //     array_push($arrData, $query2);
-                //     if ($gejala[$i] == "G01" || $gejala[$i] == "G02" || $gejala[$i] == "G03" || $gejala[$i] == "G04" || $gejala[$i] == "G05" || $gejala[$i] == "G06" || $gejala[$i] == "G07") {
-                //         $gejalaD01[] = $gejala[$i];
-                //         $nilaiPakarD01[] = $nilaiPakar[$i];
-                //         $nilaiUserD01[] = $nilaiUser[$i];
-                //     }
-                //     if ($gejala[$i] == "G08" || $gejala[$i] == "G09" || $gejala[$i] == "G10" || $gejala[$i] == "G11" || $gejala[$i] == "G05" || $gejala[$i] == "G06" || $gejala[$i] == "G12" || $gejala[$i] == "G13" || $gejala[$i] == "G14" || $gejala[$i] == "G15" || $gejala[$i] == "G04") {
-                //         $gejalaD02[] = $gejala[$i];
-                //         $nilaiPakarD02[] = $nilaiPakar[$i];
-                //         $nilaiUserD02[] = $nilaiUser[$i];
-                //     }
-                //     if ($gejala[$i] == "G16" || $gejala[$i] == "G17" || $gejala[$i] == "G18" || $gejala[$i] == "G19" || $gejala[$i] == "G20" || $gejala[$i] == "G21" || $gejala[$i] == "G22" || $gejala[$i] == "G23") {
-                //         $gejalaD03[] = $gejala[$i];
-                //         $nilaiPakarD03[] = $nilaiPakar[$i];
-                //         $nilaiUserD03[] = $nilaiUser[$i];
-                //     }
-                // }
-
-                //   $panjangGejalaD01 = count($gejalaD01);
-                //   for ($a = 0; $a < $panjangGejalaD01; $a++) {
-                //     $nilaiCFD01[] = $nilaiPakarD01[$a] * $nilaiUserD01[$a];
-                //   }
-
-                //   $panjangGejalaD02 = count($gejalaD02);
-                //   for ($b = 0; $b < $panjangGejalaD02; $b++) {
-                //     $nilaiCFD02[] = $nilaiPakarD02[$b] * $nilaiUserD02[$b];
-                //   }
-                //   $panjangGejalaD03 = count($gejalaD03);
-                //   for ($c = 0; $c < $panjangGejalaD03; $c++) {
-                //     $nilaiCFD03[] = $nilaiPakarD03[$c] * $nilaiUserD03[$c];
-                //     // echo $nilaiCFD03[$b]. " ";
-                //   }
-
-                //   $panjangGejalaD01 = count($gejalaD01);
-                //   if ($panjangGejalaD01 > 0) {
-                //     $hasilD01 = $nilaiCFD01[0];
-                //     for ($a = 1; $a < $panjangGejalaD01; $a++) {
-                //       if ($panjangGejalaD01 > 1) {
-                //         $hasilD01 = $hasilD01 + $nilaiCFD01[$a] * (1 - $hasilD01);
-                //       }
-                //     }
-                //   }
-                //   $panjangGejalaD02 = count($gejalaD02);
-                //   if ($panjangGejalaD02 > 0) {
-                //     $hasilD02 = $nilaiCFD02[0];
-                //     for ($a = 1; $a < $panjangGejalaD02; $a++) {
-                //       if ($panjangGejalaD02 > 1) {
-                //         $hasilD02 = $hasilD02 + $nilaiCFD02[$a] * (1 - $hasilD02);
-                //       }
-                //     }
-                //   }
-                //   $panjangGejalaD03 = count($gejalaD03);
-                //   if ($panjangGejalaD03 > 0) {
-                //     $hasilD03 = $nilaiCFD03[0];
-                //     for ($a = 1; $a < $panjangGejalaD03; $a++) {
-                //       if ($panjangGejalaD03 > 1) {
-                //         $hasilD03 = $hasilD03 + $nilaiCFD03[$a] * (1 - $hasilD03);
-                //       }
-                //     }
-                //   }
-                //   if ($hasilD01 > $hasilD02) {
-                //     if ($hasilD01 > $hasilD03) {
-                //       $hasilDiagnosa = "D01";
-                //       $persentaseHasil = $hasilD01;
-                //     } else {
-                //       $hasilDiagnosa = "D03";
-                //       $persentaseHasil = $hasilD03;
-                //     }
-                //   } else if ($hasilD02 > $hasilD03) {
-                //     $hasilDiagnosa = "D02";
-                //     $persentaseHasil = $hasilD02;
-                //   } else {
-                //     $hasilDiagnosa = "D03";
-                //     $persentaseHasil = $hasilD03;
-                //   }
-                //   $akurasi = $persentaseHasil * 100;
-                //   $output = number_format($akurasi, 2, '.', '');
-                //   $conn = mysqli_connect('localhost', 'root', '', 'sistem_pakar');
-                //   $penyakit = mysqli_query($conn, "SELECT nama_penyakit, gambar FROM penyakit WHERE kode_penyakit = '$hasilDiagnosa'");
-                //   $dataPenyakit = mysqli_fetch_array($penyakit);
-
-                //   $solusi = mysqli_query($conn, "SELECT detail_solusi FROM solusi WHERE kode_penyakit = '$hasilDiagnosa'");
-                //   $diagnosa = mysqli_fetch_array($solusi);
-
-                //   echo "
-                //       <div class='col-md-9' style='text-align: justify;'>
-                //         <p class='lead'>Berdasarkan gejala dan nilai keyakinan yang telah Anda sebutkan. Hasil diagnosa menyatakan gejala tersebut memiliki kemungkinan persentase <strong style='font-size: larger;'>$output%</strong>, bahwa penyakit yang sedang diderita adalah <strong style='font-size: larger;'>$dataPenyakit[nama_penyakit]</strong>.</p>
-
-                //         <h3 class='mt-5'>Solusi Pengobatan</h3><strong class='lead'>$diagnosa[detail_solusi]</strong>
-                //       </div>
-                //       <div class='col-md-3'>
-                //         <img src='assets/images/penyakit-seeder/$dataPenyakit[gambar]' alt='Gambar Hasil Diagnosa' width='100%'>
-                //       </div>
-                //       <div class='col-md-12' hidden>
-                //         <input type='text' value='$hasilDiagnosa' name='kode_penyakit'>
-                //         <input type='text' value='$output' name='cf_hasil'>
-                //       </div>
-                //     ";
                 }
 
                 ?>
-                 <?php $number = 1;
-                           foreach ($datapenyakit as $calldata) : ?>
-                              <tr>
-                                 <td><?= $number++; ?></td>
-                                 <td><?= $calldata['kode_penyakit']; ?></td>
-                                 <td><?= $calldata['nama_penyakit']; ?></td>
-                                 
-                              </tr>
-                <?php endforeach ?>
               </tbody>
             </table>
             <div id="send-data" hidden>
@@ -248,7 +56,8 @@
             <div class="alert alert-danger" role="alert">
               <h2 class="mb-3" align="left">Hasil Diagnosa!</h2>
               <div class="row">
-                <?php echo cf($nilaiUser, $getKeyakinan, $getKode) ?>
+                <!-- hitung cf -->
+                <?= $result_view ?>
               </div>
             </div>
             <div class="float-end">

@@ -30,4 +30,9 @@ class PenyakitModel extends Model
    {
       return $this->where(['kode_penyakit' => $id])->first();
    }
+
+   public function getPenyakitByKode($kode)
+   {
+      return $this->where(['kode_penyakit' => $kode])->first();
+   }
 }
