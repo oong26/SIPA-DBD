@@ -99,7 +99,7 @@ class DiagnosaController extends BaseController
          $selectedResultPenyakitPercent = $allPenyakit[$maxKey]->final_result;
          $penyakit = $this->PenyakitModel->getPenyakitByKode($selectedKodePenyakit);
          $solusi = $this->SolusiModel->getSolusiByKode($selectedKodePenyakit);
-
+         $imgPath = base_url().'assets/images/penyakit-seeder/'.$penyakit['gambar'];
          $resultView = "
                <div class='col-md-9' style='text-align: justify;'>
                <p class='lead'>Berdasarkan gejala dan nilai keyakinan yang telah Anda sebutkan. Hasil diagnosa menyatakan gejala tersebut memiliki kemungkinan persentase <strong style='font-size: larger;'>$selectedResultPenyakitPercent%</strong>, bahwa penyakit yang sedang diderita adalah <strong style='font-size: larger;'>$penyakit[nama_penyakit]</strong>.</p>
@@ -107,7 +107,7 @@ class DiagnosaController extends BaseController
                <h3 class='mt-5'>Solusi Pengobatan</h3><strong class='lead'>$solusi[detail_solusi]</strong>
                </div>
                <div class='col-md-3'>
-               <img src='assets/images/penyakit-seeder/$penyakit[gambar]' alt='Gambar Hasil Diagnosa' width='100%'>
+               <img src='$imgPath' alt='Gambar Hasil Diagnosa' width='100%'>
                </div>
                <div class='col-md-12' hidden>
                <input type='text' value='$selectedKodePenyakit' name='kode_penyakit'>
